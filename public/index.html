@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NotiQ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="brand-lockup">
+          <div class="brand-mark">NQ</div>
+          <div>
+            <p class="eyebrow">NotiQ</p>
+            <h2>Control Surface</h2>
+          </div>
+        </div>
+        <nav class="side-nav">
+          <a class="side-link side-link-active" href="/">Live tester</a>
+          <a class="side-link" href="/dashboard">Admin dashboard</a>
+        </nav>
+        <p class="side-note">
+          Send notifications, inspect payloads, and verify read-state changes from one place.
+        </p>
+      </aside>
+
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Notification workspace</p>
+          <h1>Test your notification API from the browser.</h1>
+          <p class="hero-text">
+            Create in-app alerts, trigger email sends, inspect a user's notification feed,
+            and mark items as read without touching raw curl commands.
+          </p>
+        </div>
+        <div class="hero-status" id="health-card">
+          <span class="status-label">API status</span>
+          <strong id="health-status">Checking...</strong>
+          <button class="ghost-button" id="refresh-health" type="button">Refresh health</button>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>Create in-app notification</h2>
+            <p>Sends a notification into the current user's feed.</p>
+          </div>
+          <form id="inapp-form" class="stack">
+            <label>
+              User ID
+              <input name="userId" value="user-1" required />
+            </label>
+            <label>
+              Title
+              <input name="title" value="Welcome aboard" required />
+            </label>
+            <label>
+              Message
+              <textarea name="body" rows="4" required>Hello from the NotiQ workspace.</textarea>
+            </label>
+            <button type="submit">Send in-app notification</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>Send email notification</h2>
+            <p>Uses the same backend route your tests already cover.</p>
+          </div>
+          <form id="email-form" class="stack">
+            <label>
+              User ID
+              <input name="userId" value="user-1" required />
+            </label>
+            <label>
+              Email address
+              <input name="to" type="email" placeholder="user@example.com" required />
+            </label>
+            <label>
+              Subject
+              <input name="subject" value="Welcome to NotiQ" required />
+            </label>
+            <label>
+              Message
+              <textarea name="body" rows="4" required>This is a live test from the NotiQ UI.</textarea>
+            </label>
+            <button type="submit">Send email notification</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>Lookup notifications</h2>
+            <p>Fetch a user's feed and mark any item as read.</p>
+          </div>
+          <form id="lookup-form" class="stack inline-form">
+            <label>
+              User ID
+              <input name="userId" value="user-1" required />
+            </label>
+            <button type="submit">Load notifications</button>
+          </form>
+          <div id="notifications-empty" class="empty-state">No notifications loaded yet.</div>
+          <div id="notifications-list" class="notification-list"></div>
+        </section>
+
+        <section class="panel panel-wide">
+          <div class="panel-heading">
+            <h2>Response console</h2>
+            <p>Every request result appears here so you can see exactly what the backend returned.</p>
+          </div>
+          <pre id="response-console" class="response-console">Waiting for your first action...</pre>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+  </html>
