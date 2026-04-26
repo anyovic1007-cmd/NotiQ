@@ -5,7 +5,26 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "jest --runInBand"
+    "test": "jest --runInBand",
+    "dashboard:install": "npm install --prefix dashboard",
+    "dashboard:build": "npm run build --prefix dashboard",
+    "setup": "npm install && npm run dashboard:install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anyovic1007-cmd/NotiQ.git"
+  },
+  "keywords": [
+    "notifications",
+    "express",
+    "supabase",
+    "nodemailer",
+    "dashboard"
+  ],
+  "author": "Ryo",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.8",
